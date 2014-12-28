@@ -3,7 +3,7 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Joe Giuffrida - Creator - http://www.twitter.com/_jgiuffrida
 
 # THANKS
 
