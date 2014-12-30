@@ -1,27 +1,45 @@
 
 
 var TeamSorter = function(numberOfTeams, numberOfPlayers) {
-	var i=0, j=0;
-	//this.teams = teams;
+	var i=0, j=0, rem = 0, modifiedCounts = {}, shuffledTeams = [], total = 0;
 	this.availableTeams = [];
 	this.numberOfTeams = numberOfTeams;
 	this.numberOfPlayers = numberOfPlayers;
 
-	this.playersPerTeam = Math.ceil(this.numberOfPlayers / this.numberOfTeams);
+	this.remainder = this.numberOfPlayers % this.numberOfTeams;
+	this.playersPerTeam = Math.floor(this.numberOfPlayers / this.numberOfTeams);
+
+	console.log(this.remainder);
+
+	// I don't like this, but NYE is on wednesday
+
+	if(this.remainder > 0) {
+		for(; i<this.numberOfTeams; i++) {
+			shuffledTeams.push(i);
+		}
+		i=0;
+		for(; rem<this.remainder; rem++) {
+			this.shuffle(shuffledTeams);
+			modifiedCounts[shuffledTeams.shift()] = 1;
+		}
+	}
 
 	for( ; i<this.numberOfTeams; i++ ) {
 		j=0;
-		for( ; j<this.playersPerTeam; j++ ) {
+		total = modifiedCounts[i] ? modifiedCounts[i] + this.playersPerTeam : this.playersPerTeam;
+		console.log(modifiedCounts);
+		console.log(i,total);
+		for( ; j<total; j++ ) {
 			this.availableTeams.push(i);
 		}
 	}
 
-	this.shuffleTeams();
+	this.shuffle(this.availableTeams);
 
 }, fn = TeamSorter.prototype;
 
-fn.shuffleTeams = function() {
-    for(var j, x, i = this.availableTeams.length; i; j = Math.floor(Math.random() * i), x = this.availableTeams[--i], this.availableTeams[i] = this.availableTeams[j], this.availableTeams[j] = x);
+fn.shuffle = function(arr) {
+    for(var j, x, i = arr.length; i; j = Math.floor(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
     
     return this;
 }
@@ -29,7 +47,7 @@ fn.shuffleTeams = function() {
 fn.pickTeam = function() {
 	var team = this.availableTeams.shift();
 
-	this.shuffleTeams();
+	this.shuffle(this.availableTeams);
 	return team;
 };
 
