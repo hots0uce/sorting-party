@@ -9,8 +9,6 @@ var TeamSorter = function(numberOfTeams, numberOfPlayers) {
 	this.remainder = this.numberOfPlayers % this.numberOfTeams;
 	this.playersPerTeam = Math.floor(this.numberOfPlayers / this.numberOfTeams);
 
-	console.log(this.remainder);
-
 	// I don't like this, but NYE is on wednesday
 
 	if(this.remainder > 0) {
@@ -27,8 +25,6 @@ var TeamSorter = function(numberOfTeams, numberOfPlayers) {
 	for( ; i<this.numberOfTeams; i++ ) {
 		j=0;
 		total = modifiedCounts[i] ? modifiedCounts[i] + this.playersPerTeam : this.playersPerTeam;
-		console.log(modifiedCounts);
-		console.log(i,total);
 		for( ; j<total; j++ ) {
 			this.availableTeams.push(i);
 		}
