@@ -15,7 +15,7 @@ gulp.task('scripts', function() {
           insertGlobals : false,
           debug : !gulp.env.production
         }))
-        //.pipe(uglify())
+        .pipe(uglify())
     .pipe(gulp.dest('js/dist'))
     .pipe(notify('Scripts browserify\'ed and uglified'));
 });
