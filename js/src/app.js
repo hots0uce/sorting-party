@@ -1,2 +1,4 @@
-var TeamSorter = require('./team.js');
+var ui = require('./ui.js');
 
+
+ui.init();

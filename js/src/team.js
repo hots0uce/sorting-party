@@ -9,7 +9,7 @@ var TeamSorter = function(numberOfTeams, numberOfPlayers) {
 
 	this.playersPerTeam = Math.ceil(this.numberOfPlayers / this.numberOfTeams);
 
-	for( ; i<teams.length; i++ ) {
+	for( ; i<this.numberOfTeams; i++ ) {
 		j=0;
 		for( ; j<this.playersPerTeam; j++ ) {
 			this.availableTeams.push(i);
@@ -21,7 +21,7 @@ var TeamSorter = function(numberOfTeams, numberOfPlayers) {
 }, fn = TeamSorter.prototype;
 
 fn.shuffleTeams = function() {
-    for(var j, x, i = this.availableTeams.length; i; j = Math.floor(Math.random() * i), x = this.teams[--i], this.teams[i] = this.teams[j], this.teams[j] = x);
+    for(var j, x, i = this.availableTeams.length; i; j = Math.floor(Math.random() * i), x = this.availableTeams[--i], this.availableTeams[i] = this.availableTeams[j], this.availableTeams[j] = x);
     
     return this;
 }
