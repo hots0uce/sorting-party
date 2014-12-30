@@ -9,8 +9,8 @@ exports.init = function(playersCount) {
 	exports.ts = new TeamSorter(houses.length, playersCount);
 	this.remaining = this.ts.availableTeams.length;
 
-	audio.loadSound('/audio/test.mp3',function() {
-		
+	audio.loadSound('/sorting-party/audio/test.mp3',function() {
+
 	});
 };
 
