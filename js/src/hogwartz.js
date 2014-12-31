@@ -2,7 +2,12 @@ var TeamSorter = require('./team.js'),
 	audio = require('./audio.js'),
 	houses = ['Gryffindor','Hufflepuff','Ravenclaw','Slytherin'],
 	ts,
-	soundFile = '/sorting-party/audio/test.mp3';
+	soundFIles = {
+		'Gryffindor': '/sorting-party/audio/gr.mp3',
+		'Hufflepuff': '/sorting-party/audio/h.mp3',
+		'Ravenclaw': '/sorting-party/audio/r.mp3',
+		'Slytherin': '/sorting-party/audio/s.mp3'
+	}
 
 
 exports.remaining = 0;
@@ -18,7 +23,7 @@ exports.init = function(playersCount) {
 exports.pickTeam = function() {
 	var teamIdx = exports.ts.pickTeam();
 	this.remaining = this.ts.availableTeams.length;
-	audio.playSound(soundFile);
+	audio.playSound(soundFilef[houses[teamIdx]]);
 	return houses[teamIdx];
 };
 
